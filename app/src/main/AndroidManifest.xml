@@ -25,7 +25,7 @@
         </activity>
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value=""/> <!--API_KRY 복붙해서 넣기-->
+            android:value="AIzaSyBkyGX2wPw9h1F0ptFarhS6ImGnTy-aCGE"/> <!--API_KRY 복붙해서 넣기-->
     </application>
 
 </manifest>
