@@ -10,10 +10,10 @@
 
     <!--name은 동일하게 작성-->
     <fragment
-        android:id="@+id/amp"
+        android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        map:cameraTargetLat="37.541"
-        map:cameraTargetLng="126.986"
+        map:cameraTargetLat="18.926899"
+        map:cameraTargetLng="102.395621"
         map:cameraZoom="15"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
