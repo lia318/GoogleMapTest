@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -31,12 +32,21 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         googleMap.getUiSettings().setZoomControlsEnabled(true); // 확대 축소 버튼
     } // end of onMapReady
 
+    public static final int ITEM_SATELLITE = 1;
+    public static final int ITEM_NORMAL = 2;
+    public static final int ITEM_PROVENCE = 3;
+    public static final int ITEM_COEXMALL = 4;
+    //public static final int ITEM_IPARKMALL = 5;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        menu.add(0, 1, 0, "위성 지도"); // 메뉴 구별 용도
-        menu.add(0, 2, 0, "일반 지도");
-        menu.add(0, 3, 0, "프로방스");
+        menu.add(0, ITEM_SATELLITE, 0, "위성 지도"); // 메뉴 구별 용도
+        menu.add(0, ITEM_NORMAL, 0, "일반 지도");
+        SubMenu hotMenu = menu.addSubMenu("좋아하는 장소"); // 코드 힌트 목록을 할 때 대소문자를 구분하면 원하는 목록을 볼 수 있다.
+        hotMenu.add(0, ITEM_PROVENCE, 0, "프로방스");
+        hotMenu.add(0, ITEM_COEXMALL, 0, "프로방스");
+        // menu.add(0, ITEM_, 0, "프로방스");
 
         return true;
     } // end of onCreateOptionsMenu
@@ -45,11 +55,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
         switch(item.getItemId()){
-            case 1: googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+            case ITEM_SATELLITE: googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                 return true;
-            case 2: googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+            case ITEM_NORMAL: googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                 return true;
-            case 3: googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.791088, 126.685061), 18));
+            case ITEM_PROVENCE: googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.791088, 126.685061), 18));
+                return true;
+            case ITEM_COEXMALL: googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.513151, 127.057706), 18));
                 return true;
         } // end of switch
 
